@@ -38,10 +38,10 @@ class Directory(models.Model):
 
 class Item(models.Model):
     accession = models.ForeignKey(AccessionNumber, on_delete=models.CASCADE)
-    description = models.TextField()
-    notes = models.TextField()
+    description = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
     date_range = models.ForeignKey(DateRange, on_delete=models.CASCADE)
-    places = models.ManyToManyField(Place)
+    places = models.ManyToManyField(Place, blank=True)
     parent = models.ForeignKey(Directory, null=True, blank=True, on_delete=models.SET_NULL)
     def __str__(self):
-        return self.accession
+        return str(self.accession)

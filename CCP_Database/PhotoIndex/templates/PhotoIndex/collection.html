@@ -1,0 +1,17 @@
+{% extends "PhotoIndex/base.html" %}
+{% block title %}Collection{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <div class="container-fluid">
+                {% for dir in dirs %}
+                    <h1>{{ dir.parent.name }}</h1>
+                    {% for child in dir.children %}
+                        <h2>{{ child.name }}</h2>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
