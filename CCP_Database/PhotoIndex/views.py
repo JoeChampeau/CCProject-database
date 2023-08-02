@@ -8,3 +8,6 @@ def collection(request):
         dirs.append({"parent": dir, "children": dir.directory_set.all()})
     context = {"dirs": dirs}
     return render(request, 'PhotoIndex/collection.html', context)
+
+def directory(request):
+    return render(request, 'PhotoIndex/directory.html')

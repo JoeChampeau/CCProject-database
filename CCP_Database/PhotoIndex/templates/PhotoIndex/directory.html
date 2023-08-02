@@ -1,0 +1,28 @@
+{% extends "PhotoIndex/base.html" %}
+{% load static %}
+{% block title %}Directory{% endblock title %}
+
+{% block content %}
+<div class="container-sm">
+    <div class="row border justify-content-center align-items-center">
+        <div class="col-1 p-3">
+            <img class="icon mx-0" src="{% static 'PhotoIndex/folder.png' %}" alt="Folder">
+        </div>
+        <div class="col-9">
+            <h1 class="m-1">Box #</h1>
+        </div>
+        <div class="col-2 text-end">
+            <p class="m-1"><i># items</i></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% comment "" %}
+{% for dir in dirs %}
+    <h1>{{ dir.parent.name }}</h1>
+    {% for child in dir.children %}
+        <h2>{{ child.name }}</h2>
+    {% endfor %}
+{% endfor %}
+{% endcomment %}
