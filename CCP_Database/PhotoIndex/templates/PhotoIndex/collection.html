@@ -5,7 +5,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
-            {% include "PhotoIndex/directory.html" %}
+            {% for dir in dirs %}
+            {% include "PhotoIndex/directory.html" with parent=dir.parent children=dir.children %}
+            {% endfor %}
         </div>
     </div>
 </div>

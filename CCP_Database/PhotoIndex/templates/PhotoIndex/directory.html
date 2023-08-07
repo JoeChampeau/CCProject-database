@@ -3,17 +3,33 @@
 {% block title %}Directory{% endblock title %}
 
 {% block content %}
-<div class="container-sm">
-    <div class="row border justify-content-center align-items-center">
-        <div class="col-1 p-3">
+<div class="container-fluid p-3 border rounded-3 border-2">
+    <div class="d-flex justify-content-center align-items-center border">
+        <div class="px-3 py-2">
             <img class="icon mx-0" src="{% static 'PhotoIndex/folder.png' %}" alt="Folder">
         </div>
-        <div class="col-9">
-            <h1 class="m-1">Box #</h1>
+        <div class="px-3 py-2 flex-grow-1">
+            <h3 class="m-1">{{parent.name}}</h3>
         </div>
-        <div class="col-2 text-end">
-            <p class="m-1"><i># items</i></p>
+        <div class="px-3 py-2">
+            <p class="m-1"><i>{{children.count}} items</i></p>
         </div>
+    </div>
+    <div id="accordion">
+        {% for child in children %}
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn" data-bs-toggle="collapse" role="button" href="#id{{child.id}}" aria-expanded="false" aria-controls="#id{{child.id}}">
+                        {{child.name}}
+                    </a>
+                </div>
+                <div id="id{{child.id}}" class="collapse" data-bs-parent="#accordion">
+                    <div class="card-body">
+                        example
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}
@@ -25,4 +41,5 @@
         <h2>{{ child.name }}</h2>
     {% endfor %}
 {% endfor %}
+
 {% endcomment %}
