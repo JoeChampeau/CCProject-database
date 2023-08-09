@@ -4,33 +4,35 @@
 
 {% block content %}
 <div class="container-fluid p-3 border rounded-3 border-2">
-    <div class="d-flex justify-content-center align-items-center border">
-        <div class="px-3 py-2">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="px-3 pb-2">
             <img class="icon mx-0" src="{% static 'PhotoIndex/folder.png' %}" alt="Folder">
         </div>
-        <div class="px-3 py-2 flex-grow-1">
+        <div class="px-3 pb-2 flex-grow-1">
             <h3 class="m-1">{{parent.name}}</h3>
         </div>
-        <div class="px-3 py-2">
+        <div class="px-3 pb-2">
             <p class="m-1"><i>{{children.count}} items</i></p>
         </div>
     </div>
-    <div id="accordion">
+    <hr class="my-3"></hr>
+    <div id="dir-contents" class="collapse">
         {% for child in children %}
-            <div class="card">
-                <div class="card-header">
-                    <a class="btn" data-bs-toggle="collapse" role="button" href="#entry{{child.id}}" aria-expanded="false" aria-controls="#entry{{child.id}}">
-                        {{child.name}}
-                    </a>
-                </div>
-                <div id="entry{{child.id}}" class="collapse" data-bs-parent="#accordion">
-                    <div class="card-body">
-                        example
+            <div class="card border-0">
+                <div class="d-flex align-items-center m-1 border rounded-3">
+                    <div class="flex-grow-1 p-3">
+                        <div class="btn-link text-dark" data-bs-toggle="collapse" type="button" href="#">
+                            <p class="m-0">{{child.name}}</p>
+                        </div>
+                    </div>
+                    <div class="align-self-start p-3">
+                        <p class="m-0"><i># items</i></p>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+    <button class="accordion-button collapsed dir-contents-icon p-1" type="button" data-bs-toggle="collapse" data-bs-target="#dir-contents" aria-expanded="false" aria-controls="dir-contents"></button>
 </div>
 {% endblock content %}
 

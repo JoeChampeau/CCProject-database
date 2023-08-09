@@ -2,3 +2,8 @@
     width: 40px;
     height: auto;
 }
+
+.dir-contents-icon::after {
+    margin-left:auto;
+    margin-right:auto;
+}
